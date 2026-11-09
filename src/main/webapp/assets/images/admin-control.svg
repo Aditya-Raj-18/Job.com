@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-labelledby="title desc">
+  <title id="title">Administration workspace</title><desc id="desc">An animated dashboard with marketplace activity and a profile card.</desc>
+  <style>
+    .float{animation:float 4.4s ease-in-out infinite}.float-late{animation:float 4.4s ease-in-out -2s infinite}.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.6s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes pulse{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.1)}}
+  </style>
+  <ellipse cx="136" cy="171" rx="108" ry="12" fill="#063d38" opacity=".25"/>
+  <g class="float"><rect x="35" y="25" width="182" height="129" rx="15" fill="#f7fffc"/><rect x="49" y="40" width="154" height="26" rx="8" fill="#e7f5ef"/><circle cx="62" cy="53" r="5" fill="#1d9c81"/><rect x="74" y="50" width="73" height="5" rx="2.5" fill="#71958a"/><rect x="51" y="78" width="70" height="59" rx="9" fill="#f0f7f4"/><rect x="129" y="78" width="74" height="25" rx="8" fill="#e4f4ed"/><rect x="129" y="111" width="74" height="26" rx="8" fill="#eaf0fb"/><path d="M63 123V110l9-8 9 6 13-17 13 8" fill="none" stroke="#208b75" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="107" cy="99" r="3" fill="#208b75"/><path d="M140 89h44M140 97h31M140 121h47M140 129h34" stroke="#88a49b" stroke-width="3" stroke-linecap="round"/></g>
+  <g class="float-late"><rect x="164" y="111" width="69" height="49" rx="12" fill="#14786e"/><circle cx="181" cy="128" r="7" fill="#f7c794"/><path d="M171 151c1-10 5-15 10-15s10 5 11 15" fill="#bfe8d9"/><path d="M198 125h24M198 134h18M198 143h20" stroke="#d6f1e6" stroke-width="3" stroke-linecap="round"/></g>
+  <g class="pulse"><circle cx="223" cy="38" r="14" fill="#f2ca75"/><path d="m216 38 5 5 9-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

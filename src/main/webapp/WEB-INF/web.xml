@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <display-name>Job.com</display-name>
+  <listener><listener-class>com.jobcom.web.AdminContextListener</listener-class></listener>
+  <filter><filter-name>adminAuth</filter-name><filter-class>com.jobcom.web.AdminAuthFilter</filter-class></filter>
+  <filter-mapping><filter-name>adminAuth</filter-name><url-pattern>/admin</url-pattern></filter-mapping>
+  <filter-mapping><filter-name>adminAuth</filter-name><url-pattern>/admin/*</url-pattern></filter-mapping>
+
+  <servlet><servlet-name>login</servlet-name><servlet-class>com.jobcom.web.LoginServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>login</servlet-name><url-pattern>/admin/login</url-pattern></servlet-mapping>
+  <servlet><servlet-name>passwordReset</servlet-name><servlet-class>com.jobcom.web.PasswordResetServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>passwordReset</servlet-name><url-pattern>/forgot-password</url-pattern></servlet-mapping>
+  <servlet><servlet-name>admin</servlet-name><servlet-class>com.jobcom.web.AdminServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>admin</servlet-name><url-pattern>/admin</url-pattern></servlet-mapping>
+  <servlet><servlet-name>logout</servlet-name><servlet-class>com.jobcom.web.LogoutServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>logout</servlet-name><url-pattern>/admin/logout</url-pattern></servlet-mapping>
+  <servlet><servlet-name>assessments</servlet-name><servlet-class>com.jobcom.web.AssessmentServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>assessments</servlet-name><url-pattern>/admin/assessments</url-pattern></servlet-mapping>
+  <servlet><servlet-name>resumeTemplates</servlet-name><servlet-class>com.jobcom.web.ResumeTemplateServlet</servlet-class><multipart-config><max-file-size>5242880</max-file-size><max-request-size>6291456</max-request-size></multipart-config></servlet>
+  <servlet-mapping><servlet-name>resumeTemplates</servlet-name><url-pattern>/admin/resume-templates</url-pattern></servlet-mapping>
+
+  <servlet><servlet-name>seekerLogin</servlet-name><servlet-class>com.jobcom.web.SeekerLoginServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>seekerLogin</servlet-name><url-pattern>/seeker/login</url-pattern></servlet-mapping>
+  <servlet><servlet-name>seekerPanel</servlet-name><servlet-class>com.jobcom.web.SeekerPanelServlet</servlet-class><multipart-config><max-file-size>5242880</max-file-size><max-request-size>6291456</max-request-size></multipart-config></servlet>
+  <servlet-mapping><servlet-name>seekerPanel</servlet-name><url-pattern>/seeker</url-pattern></servlet-mapping>
+  <servlet><servlet-name>seekerProfilePhoto</servlet-name><servlet-class>com.jobcom.web.SeekerProfilePhotoServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>seekerProfilePhoto</servlet-name><url-pattern>/seeker/profile-photo</url-pattern></servlet-mapping>
+  <servlet><servlet-name>seekerJobs</servlet-name><servlet-class>com.jobcom.web.SeekerJobsServlet</servlet-class><multipart-config><max-file-size>5242880</max-file-size><max-request-size>6291456</max-request-size><file-size-threshold>1048576</file-size-threshold></multipart-config></servlet>
+  <servlet-mapping><servlet-name>seekerJobs</servlet-name><url-pattern>/seeker/jobs</url-pattern></servlet-mapping>
+  <servlet><servlet-name>seekerJobAlerts</servlet-name><servlet-class>com.jobcom.web.SeekerJobAlertsServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>seekerJobAlerts</servlet-name><url-pattern>/seeker/job-alerts</url-pattern></servlet-mapping>
+  <servlet><servlet-name>recruiterApplicationResume</servlet-name><servlet-class>com.jobcom.web.RecruiterApplicationResumeServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>recruiterApplicationResume</servlet-name><url-pattern>/recruiter/application-resume</url-pattern></servlet-mapping>
+  <servlet><servlet-name>seekerResources</servlet-name><servlet-class>com.jobcom.web.SeekerResourcesServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>seekerResources</servlet-name><url-pattern>/seeker/resources</url-pattern></servlet-mapping>
+  <servlet-mapping><servlet-name>seekerResources</servlet-name><url-pattern>/seeker/assessments</url-pattern></servlet-mapping>
+  <servlet><servlet-name>resumeBuilder</servlet-name><servlet-class>com.jobcom.web.ResumeBuilderServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>resumeBuilder</servlet-name><url-pattern>/resume</url-pattern></servlet-mapping>
+  <servlet><servlet-name>atsScore</servlet-name><servlet-class>com.jobcom.web.AtsScoreServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>atsScore</servlet-name><url-pattern>/ats-score</url-pattern></servlet-mapping>
+  <servlet><servlet-name>resumeTemplateFile</servlet-name><servlet-class>com.jobcom.web.ResumeTemplateFileServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>resumeTemplateFile</servlet-name><url-pattern>/resume-template-file</url-pattern></servlet-mapping>
+  <servlet><servlet-name>chat</servlet-name><servlet-class>com.jobcom.web.ChatServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>chat</servlet-name><url-pattern>/chat</url-pattern></servlet-mapping>
+  <servlet><servlet-name>seekerSupport</servlet-name><servlet-class>com.jobcom.web.SeekerSupportServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>seekerSupport</servlet-name><url-pattern>/support</url-pattern></servlet-mapping>
+  <servlet><servlet-name>recruiterSupport</servlet-name><servlet-class>com.jobcom.web.RecruiterSupportServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>recruiterSupport</servlet-name><url-pattern>/recruiter/support</url-pattern></servlet-mapping>
+
+  <servlet><servlet-name>recruiterLogin</servlet-name><servlet-class>com.jobcom.web.RecruiterLoginServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>recruiterLogin</servlet-name><url-pattern>/recruiter/login</url-pattern></servlet-mapping>
+  <servlet><servlet-name>recruiterDashboard</servlet-name><servlet-class>com.jobcom.web.RecruiterDashboardServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>recruiterDashboard</servlet-name><url-pattern>/recruiter</url-pattern></servlet-mapping>
+  <servlet><servlet-name>registration</servlet-name><servlet-class>com.jobcom.web.RegistrationServlet</servlet-class><multipart-config><max-file-size>5242880</max-file-size><max-request-size>18874368</max-request-size><file-size-threshold>1048576</file-size-threshold></multipart-config></servlet>
+  <servlet-mapping><servlet-name>registration</servlet-name><url-pattern>/register</url-pattern></servlet-mapping>
+  <servlet><servlet-name>adminDocument</servlet-name><servlet-class>com.jobcom.web.AdminDocumentServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>adminDocument</servlet-name><url-pattern>/admin/document</url-pattern></servlet-mapping>
+  <servlet><servlet-name>reportExport</servlet-name><servlet-class>com.jobcom.web.ReportExportServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>reportExport</servlet-name><url-pattern>/admin/report-export</url-pattern></servlet-mapping>
+
+  <welcome-file-list><welcome-file>index.jsp</welcome-file></welcome-file-list>
+</web-app>

@@ -1,0 +1,19 @@
+# Build and IDE files
+target/
+tmp/
+.settings/
+.project
+.classpath
+*.iml
+
+# Local configuration and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Private uploads: resumes, identity documents, licenses, photos, and admin uploads
+uploads/**
+!uploads/private/
+uploads/private/*
+!uploads/private/.gitkeep

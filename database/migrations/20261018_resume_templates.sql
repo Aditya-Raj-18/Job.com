@@ -1,0 +1,21 @@
+USE jobcom;
+CREATE TABLE IF NOT EXISTS resume_templates (
+  template_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(140) NOT NULL,
+  description VARCHAR(500) NOT NULL DEFAULT '',
+  layout VARCHAR(40) NOT NULL DEFAULT 'classic',
+  file_path VARCHAR(500) NULL,
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  uploaded_by BIGINT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS resume_drafts (
+  draft_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  template_id BIGINT NOT NULL,
+  title VARCHAR(180) NOT NULL,
+  resume_data LONGTEXT NOT NULL,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_resume_user_title(user_id,title),
+  INDEX(user_id)
+) ENGINE=InnoDB;

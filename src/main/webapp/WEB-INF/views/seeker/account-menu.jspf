@@ -1,0 +1,58 @@
+<header class="seeker-dashboard-toolbar seeker-workspace-toolbar">
+  <a class="seeker-toolbar-brand" href="${pageContext.request.contextPath}/seeker">Job<span>.com</span></a>
+  <form class="seeker-toolbar-search" method="get" action="${pageContext.request.contextPath}/seeker/jobs">
+    <input type="search" name="q" placeholder="Search jobs by title or company" aria-label="Search jobs">
+    <button type="submit" aria-label="Search">&#x2315;</button>
+  </form>
+  <a class="seeker-toolbar-notifications" href="${pageContext.request.contextPath}/seeker?section=notifications" aria-label="Notifications" data-job-alert-poll-url="${pageContext.request.contextPath}/seeker/job-alerts" data-job-alert-seeker-id="${sessionScope.seekerId}">
+    <span aria-hidden="true">&#x2667;</span><c:if test="${unreadNotificationCount gt 0}"><b data-job-alert-badge><c:out value="${unreadNotificationCount}"/></b></c:if>
+  </a>
+  <details class="seeker-account-menu">
+    <summary aria-label="Open account menu" aria-expanded="false">
+      <span class="seeker-toolbar-avatar"><span>J</span><img src="${pageContext.request.contextPath}/seeker/profile-photo" alt="" onerror="this.remove()"></span>
+      <span class="seeker-toolbar-account-name"><strong><c:out value="${sessionScope.seekerName}"/></strong><small>Job seeker account</small></span><span class="seeker-menu-chevron" aria-hidden="true">&#x2304;</span>
+    </summary>
+    <div class="seeker-account-popover">
+      <div class="seeker-account-profile">
+        <span class="seeker-toolbar-avatar large"><span>J</span><img src="${pageContext.request.contextPath}/seeker/profile-photo" alt="" onerror="this.remove()"></span>
+        <div><strong><c:out value="${not empty profile.full_name ? profile.full_name : sessionScope.seekerName}"/></strong><small><c:choose><c:when test="${not empty profile.profile_headline}"><c:out value="${profile.profile_headline}"/></c:when><c:when test="${not empty profile.qualification}"><c:out value="${profile.qualification}"/></c:when><c:otherwise>Job seeker account</c:otherwise></c:choose></small></div>
+      </div>
+      <c:if test="${not empty profileCompletion}">
+        <div class="seeker-account-completion"><div><span>Profile completeness</span><strong><c:out value="${profileCompletion}"/>%</strong></div><span class="seeker-progress-track"><i style="width:${profileCompletion}%"></i></span></div>
+      </c:if>
+      <a class="seeker-account-profile-link" href="${pageContext.request.contextPath}/seeker?section=profile">View &amp; update profile <span>&#x2192;</span></a>
+      <c:if test="${not empty applicationCount or not empty openJobCount}">
+        <div class="seeker-account-stats"><a href="${pageContext.request.contextPath}/seeker?section=applications"><strong><c:out value="${empty applicationCount ? 0 : applicationCount}"/></strong><small>Applications</small></a><a href="${pageContext.request.contextPath}/seeker/jobs"><strong><c:out value="${empty openJobCount ? 0 : openJobCount}"/></strong><small>Open jobs</small></a></div>
+      </c:if>
+      <nav class="seeker-account-navigation" aria-label="Job seeker options">
+        <p>Workspace</p>
+        <a href="${pageContext.request.contextPath}/seeker"><span>&#x2302;</span>Dashboard</a>
+        <a href="${pageContext.request.contextPath}/seeker/jobs"><span>&#x2315;</span>Find jobs</a>
+        <a href="${pageContext.request.contextPath}/seeker?section=applications"><span>&#x25A4;</span>My applications<c:if test="${applicationCount gt 0}"><b><c:out value="${applicationCount}"/></b></c:if></a>
+        <p>Career tools</p>
+        <a href="${pageContext.request.contextPath}/seeker/resources?type=preparation"><span>&#x2726;</span>Preparation</a>
+        <a href="${pageContext.request.contextPath}/seeker/resources?type=assessments"><span>&#x25A4;</span>Assessment PDFs</a>
+        <a href="${pageContext.request.contextPath}/resume"><span>&#x25A7;</span>Resume builder</a>
+        <a href="${pageContext.request.contextPath}/ats-score"><span>&#10003;</span>ATS score checker</a>
+        <c:if test="${hasChats or not empty chats}"><a href="${pageContext.request.contextPath}/chat"><span>&#x25CC;</span>Chats<c:if test="${chatCount gt 0}"><b><c:out value="${chatCount}"/></b></c:if></a></c:if>
+        <p>Account</p>
+        <a data-job-alert-menu-link href="${pageContext.request.contextPath}/seeker?section=notifications"><span>&#x25CC;</span>Notifications<c:if test="${unreadNotificationCount gt 0}"><b data-job-alert-menu-badge><c:out value="${unreadNotificationCount}"/></b></c:if></a>
+        <a href="${pageContext.request.contextPath}/seeker?section=profile"><span>&#x25C9;</span>My profile</a>
+        <a href="${pageContext.request.contextPath}/support"><span>?</span>Contact us</a>
+      </nav>
+      <a class="seeker-account-secondary-link seeker-signout-link" href="${pageContext.request.contextPath}/seeker/login?logout=1">Sign out</a>
+    </div>
+  </details>
+</header>
+<div class="seeker-job-alert-stack" data-job-alert-stack aria-live="polite" aria-relevant="additions"></div>
+<style>
+.seeker-job-alert-stack{position:fixed;z-index:1500;top:24px;right:24px;display:grid;gap:10px;width:min(390px,calc(100vw - 32px));pointer-events:none}
+.seeker-job-alert-toast{pointer-events:auto;display:grid;grid-template-columns:38px 1fr auto;align-items:start;gap:12px;padding:15px 16px;background:#fff;border:1px solid #cfe4da;border-left:4px solid #178474;border-radius:14px;box-shadow:0 18px 44px rgba(18,61,52,.2);color:#163c38;animation:job-alert-arrive .24s ease-out both}
+.seeker-job-alert-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:#e8f5ef;color:#087b6d;font-size:19px;font-weight:800}
+.seeker-job-alert-copy strong,.seeker-job-alert-copy span{display:block}.seeker-job-alert-copy strong{font-size:14px;line-height:1.35}.seeker-job-alert-copy span{margin-top:4px;color:#607873;font-size:12px;line-height:1.45}.seeker-job-alert-copy a{display:inline-block;margin-top:9px;color:#087b6d;font-size:12px;font-weight:800;text-decoration:none}.seeker-job-alert-copy a:hover{text-decoration:underline}
+.seeker-job-alert-dismiss{border:0;background:transparent;color:#607873;padding:1px 4px;font-size:19px;line-height:1;cursor:pointer}.seeker-job-alert-dismiss:hover{color:#173d38}
+@keyframes job-alert-arrive{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.seeker-job-alert-stack{top:10px;right:10px;width:calc(100vw - 20px)}}
+@media(prefers-reduced-motion:reduce){.seeker-job-alert-toast{animation:none}}
+</style>
+<script defer src="${pageContext.request.contextPath}/assets/js/seeker-ui.js?v=20261102-job-alerts-1"></script>

@@ -1,0 +1,1 @@
+This project directory was missing and no backup was found in the Windows Recycle Bin or current Codex project folder. The admin project was reconstructed from requirements recorded in chat on 2026-10-10. The original MasterPrompt.txt was not recoverable; this README and setup guide summarize the restored project requirements.

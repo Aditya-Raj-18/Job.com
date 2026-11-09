@@ -1,0 +1,3 @@
+package com.jobcom.web;
+import com.jobcom.dao.AdminDAO;import jakarta.servlet.http.*;import java.io.*;import java.util.*;
+public class ReportExportServlet extends HttpServlet{protected void doGet(HttpServletRequest q,HttpServletResponse p)throws IOException{try{Map<String,Object>d=new AdminDAO().stats();p.setContentType("text/csv;charset=UTF-8");p.setHeader("Content-Disposition","attachment; filename=jobcom-admin-report.csv");PrintWriter w=p.getWriter();w.println("Metric,Count");for(var e:d.entrySet())w.println("\""+e.getKey()+"\","+e.getValue());}catch(Exception e){getServletContext().log("Report export failed",e);p.sendError(500);}}}
